@@ -1,16 +1,17 @@
 
 #include "ast.hpp"
+#include "value.hpp"
 
 #include <iostream>
 
 Type*
-check(Context& cxt, Expr* e)
-{
+check(Context& cxt, Expr* e){
   class V : public Expr::Visitor {
       public:
     Context& cxt;
     Type* r;
     V(Context& c) : cxt(c) { }
+
     void visit(Bool_expr* e) {
       r = &cxt.bool_type;
     }

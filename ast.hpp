@@ -80,7 +80,7 @@ class Bool_expr : public Expr {
 class Int_expr : public Expr {
     public:
   int val;
-  Int_expr(int b) : val(b) { }
+  Int_expr(int n) : val(n) { }
   void accept(Visitor& v) { return v.visit(this); }
 };
 

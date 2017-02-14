@@ -21,7 +21,7 @@ main() {
       );
     assert(check(cxt, e));
     print(e);
-    std::cout << " == " << eval(e) << '\n';
+    std::cout << " == " << eval(e).data.b << '\n';
   }
 // and
   {
@@ -34,7 +34,7 @@ main() {
       );
     assert(check(cxt, e));
     print(e);
-    std::cout << " == " << eval(e) << '\n';
+    std::cout << " == " << eval(e).data.b << '\n';
   }
   // equals
   {
@@ -47,7 +47,7 @@ main() {
       );
     assert(check(cxt, e));
     print(e);
-    std::cout << " == " << eval(e) << '\n';
+    std::cout << " == " << eval(e).data.b << '\n';
   }
 //not equals
   {
@@ -60,7 +60,7 @@ main() {
       );
     assert(check(cxt, e));
     print(e);
-    std::cout << " == " << eval(e) << '\n';
+    std::cout << " == " << eval(e).data.b << '\n';
   }
   //Xor
   {
@@ -73,7 +73,7 @@ main() {
       );
     assert(check(cxt, e));
     print(e);
-    std::cout << " == " << eval(e) << '\n';
+    std::cout << " == " << eval(e).data.b << '\n';
   }
   // >
   {
@@ -86,7 +86,7 @@ main() {
       );
     assert(check(cxt, e));
     print(e);
-    std::cout << " == " << eval(e) << '\n';
+    std::cout << " == " << eval(e).data.b << '\n';
   }
   // <
   {
@@ -99,7 +99,7 @@ main() {
       );
     assert(check(cxt, e));
     print(e);
-    std::cout << " == " << eval(e) << '\n';
+    std::cout << " == " << eval(e).data.b << '\n';
   }
   // >=
   {
@@ -112,7 +112,7 @@ main() {
       );
     assert(check(cxt, e));
     print(e);
-    std::cout << " == " << eval(e) << '\n';
+    std::cout << " == " << eval(e).data.b << '\n';
   }
   // <=
   {
@@ -125,7 +125,7 @@ main() {
       );
     assert(check(cxt, e));
     print(e);
-    std::cout << " == " << eval(e) << '\n';
+    std::cout << " == " << eval(e).data.b << '\n';
   }
   //add
   {
@@ -138,7 +138,7 @@ main() {
       );
     assert(check(cxt, e));
     print(e);
-    std::cout << " == " << eval(e) << '\n';
+    std::cout << " == " << eval(e).data.n << '\n';
   }
   // sub
   {
@@ -151,7 +151,7 @@ main() {
       );
     assert(check(cxt, e));
     print(e);
-    std::cout << " == " << eval(e) << '\n';
+    std::cout << " == " << eval(e).data.n << '\n';
   }
   // mult
   {
@@ -164,7 +164,7 @@ main() {
       );
     assert(check(cxt, e));
     print(e);
-    std::cout << " == " << eval(e) << '\n';
+    std::cout << " == " << eval(e).data.n << '\n';
   }
   // div
   {
@@ -177,7 +177,7 @@ main() {
       );
     assert(check(cxt, e));
     print(e);
-    std::cout << " == " << eval(e) << '\n';
+    std::cout << " == " << eval(e).data.n << '\n';
   }
   //remainder
   {
@@ -190,7 +190,7 @@ main() {
       );
     assert(check(cxt, e));
     print(e);
-    std::cout << " == " << eval(e) << '\n';
+    std::cout << " == " << eval(e).data.n << '\n';
   }
   //Negative
   {
@@ -202,7 +202,7 @@ main() {
       );
     assert(check(cxt, e));
     print(e);
-    std::cout << " == " << eval(e) << '\n';
+    std::cout << " == " << eval(e).data.n << '\n';
   }
 // conditional
   {
@@ -218,7 +218,7 @@ main() {
       );
     assert(check(cxt, e));
     print(e);
-    std::cout << " == " << eval(e) << '\n';
+    std::cout << " == " << eval(e).data.n << '\n';
   }
 
 }
