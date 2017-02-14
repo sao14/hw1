@@ -3,7 +3,6 @@
 #include "value.hpp"
 
 Value
-//bool
 eval(Expr* e)
 {
   class V : public Expr::Visitor {
@@ -27,7 +26,8 @@ eval(Expr* e)
     void visit(Div_expr* e) { r.data.n = eval(e->e1).data.n / eval(e->e2).data.n; }
     void visit(Rem_expr* e) { r.data.n = eval(e->e1).data.n % eval(e->e2).data.n; }
     void visit(Neg_expr* e) { r.data.n = 0 - eval(e->e1).data.n; }
-    void visit(Cond_expr* e) { r.data.b = 0;}//if (eval(e->e1)){ n = eval(e->2); } else{ n = eval(e->e3);} }
+    void visit(Cond_expr* e) { r.data.n = 0;}//if (eval(e->e1).data.b){ r.data.b = eval(e->2); }
+    // else{ r.data.b = eval(e->e3).data.b;} }
   };
   V vis;
   e->accept(vis);
