@@ -1,6 +1,7 @@
 
 #include <iostream>
 
+#include "lexer.hpp"
 #include "ast.hpp"
 #include "eval.hpp"
 #include "print.hpp"
@@ -171,7 +172,7 @@ main() {
     Expr* e =
       new Div_expr(
 
-          new Int_expr(9)
+          new Int_expr(15)
         ,
         new Int_expr(4)
       );
@@ -186,7 +187,7 @@ main() {
 
           new Int_expr(3)
         ,
-        new Int_expr(5)
+        new Int_expr(26)
       );
     assert(check(cxt, e));
     print(e);
@@ -197,7 +198,7 @@ main() {
     Expr* e =
       new Neg_expr(
 
-          new Int_expr(1)
+          new Int_expr(-4)
 
       );
     assert(check(cxt, e));
