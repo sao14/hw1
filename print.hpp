@@ -1,16 +1,13 @@
-
 #include "ast.hpp"
-
 #include <iostream>
 
-bool
-needs_parens(Expr* e)
+bool needs_parens(Expr* e)
 {
   class V : public Expr::Visitor {
       public:
     bool r;
     void visit(Bool_expr* e) { r = false; }
-    void visit(Int_expr* e) { r = false; }
+    void visit(Int_expr* e) { r = true; }
     void visit(And_expr* e) { r = true; }
     void visit(Or_expr* e) { r = true; }
     void visit(Xor_expr* e) { r = true; }

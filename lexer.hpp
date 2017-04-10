@@ -4,6 +4,8 @@
 #define LEXER_HPP
 #include "ast.hpp"
 #include<iostream>
+#include <string>
+#include <sstream>
 
 enum Token_Kind{
 Int_Tok, Bool_Tok, Colon_Tok,
@@ -12,15 +14,25 @@ Plus_Tok, Minus_Tok, Mult_Tok,
 Div_Tok, And_Tok, Or_Tok,
 Not_Tok, Equal_Tok, NEqual_Tok,
 Less_Tok, Greater_Tok, LessEq_Tok,
+GreaterEq_Tok, Rem_Tok, ID_Tok
 };
+
+template <typename T>
+std::string to_string(T value)
+{
+	std::ostringstream os ;
+	os << value ;
+	return os.str() ;
+}
 
 class Token{
     public:
-    //virtual ~Token();
+    virtual ~Token() = default;
     int kind;
-    int attribute;
+    std::string attribute;
     Token(){}
-    Token(Token_Kind, int n) : kind(n), attribute(n){}
+    //Token(Token_Kind k, int n) : kind(k), attribute(std::to_string(n)){}
+    Token(Token_Kind k, std::string String): kind(k), attribute(String){}
 };
 
 class Int_Token : Token{
@@ -39,13 +51,31 @@ class Lexer{
     public:
     const char *first, *last;
     std::string Buf;
+    int n;
+
+    Lexer(){
+    const char *first = nullptr;
+    const char *last = nullptr;
+    n=0;
+    Buf = " ";
+    }
+
+    Lexer(std::string String){
+    first = &String[0];
+    last = &String[String.size() - 1];
+    }
 
 bool EoF() const{
     return first == last;
 }
 
 char lookahead() const{
+    if(EoF()){
+        return 0;
+    }
+    else{
     return *first;
+    }
 }
 
 void consume(){
@@ -64,38 +94,38 @@ Token *Lexer::next() {
             if (lookahead() == '=') {
                 consume();
                 Buf = "";
-                return new Token(LessEq_Tok, 0);
+                return new Token(LessEq_Tok, " ");
     }
                 Buf = "";
-                return new Token(Less_Tok, 0);
+                return new Token(Less_Tok, " ");
     case '>': consume();
             if (lookahead() == '='){
                 consume();
                 Buf = "";
-                return new Token(GreaterEq_Tok, 0);
+                return new Token(GreaterEq_Tok, " ");
     }
                 Buf = "";
-                return new Token(Greater_Tok, 0);
+                return new Token(Greater_Tok, " ");
     case '+': consume();
                 Buf = "";
-                return new Token(Plus_Tok, 0);
+                return new Token(Plus_Tok, " ");
     case '-': consume();
                 Buf = "";
-                return new Token(Minus_Tok, 0);
+                return new Token(Minus_Tok, " ");
     case '*': consume();
                 Buf = "";
-                return new Token(Mult_Tok, 0);
+                return new Token(Mult_Tok, " ");
     case '/': consume();
                 Buf = "";
-                return new Token(Div_Tok, 0);
+                return new Token(Div_Tok, " ");
     case '%': consume();
                 Buf = "";
-                return new Token(Mod_Tok, 0);
+                return new Token(Rem_Tok, " ");
     case '&': consume();
             if (lookahead() == '&') {
                 consume();
                 Buf = "";
-                return new Token(And_Tok, 0);
+                return new Token(And_Tok, " ");
             } else {
                     return 0;
             }
@@ -103,30 +133,30 @@ Token *Lexer::next() {
             if(lookahead() == '|') {
                 consume();
                 Buf = "";
-                return new Token(Or_Tok, 0);
+                return new Token(Or_Tok, " ");
     }
     case '=': consume();
             if (lookahead() == '='){
                 consume();
                 Buf = "";
-                return new Token(Equal_Tok, 0);
+                return new Token(Equal_Tok, " ");
     }
     case '!': consume();
             if (lookahead() == '='){
                 consume();
                 Buf = "";
-                return new Token(NEqual_Tok, 0);
+                return new Token(NEqual_Tok, " ");
     }
     else {
                 Buf = "";
-                return new Token(Not_Tok, 0);
+                return new Token(Not_Tok, " ");
     }
     case ')': consume();
                 Buf = "";
-                return new Token(LParen_Tok, 0);
+                return new Token(LParen_Tok, " ");
     case '(': consume();
                 Buf = "";
-                return new Token(RParen_Tok, 0);
+                return new Token(RParen_Tok, " ");
     case 't':consume();
             if (lookahead() == 'r') {
                 consume();
@@ -135,7 +165,7 @@ Token *Lexer::next() {
             if (lookahead() == 'e') {
                 consume();
                 Buf = "";
-                return new Token(Bool_Tok, 1);
+                return 0;//new Token(Bool_Tok, 1);
             }
         }
     }
@@ -168,9 +198,9 @@ Token *Lexer::next() {
             while(std::isdigit(lookahead())) {
                 consume();
     }
-            int n = 0;
-            // std::std(Buf);
-            Tok = new Token(Int_Tok, n);
+
+            //int n = stoi(Buf);
+            //Token *Tok = new Int_Tok(std::stoi(Buf);
             Buf = "";
             return Tok;
             return new Token(Bool_Tok, 0);

@@ -1,7 +1,5 @@
-
 #ifndef AST_HPP
 #define AST_HPP
-
 #include <cassert>
 
 
@@ -10,6 +8,7 @@ class Int_type;
 
 class Bool_expr;
 class Int_expr;
+
 class And_expr;
 class Or_expr;
 class Xor_expr;
