@@ -1,9 +1,12 @@
 #include "lexer.hpp"
+#include "scope.hpp"
+#include "symbol.hpp"
+
 
 #include <deque>
 #include <vector>
 
-/*
+
 struct Parser {
 
     std::deque<Token*> tokens;
@@ -156,8 +159,8 @@ struct Parser {
                 consume();
                 return new Bool_expr(false);
             case Int_Tok:
-                Int_token* Tok = consume();
-                return new Int_expr(tok->value);
+                Int_Token* Tok = consume();
+                return new Int_expr(Tok->value);
             case ID_Tok:
                 return id_expression();
             case LParen_Tok: {
@@ -180,4 +183,4 @@ struct Parser {
 
 
 };
-*/
+
